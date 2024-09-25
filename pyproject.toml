@@ -1,0 +1,15 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+[project]
+version = "0.1.0"
+name = "power_analysis"
+dependencies = [
+  "tqdm"
+]
+requires-python = ">= 3.9"
+authors = [
+  {name = "Yannik Keller", email = "yannik@kelnet.de"},
+]
+description = "PhD"
+readme = "README.md"
