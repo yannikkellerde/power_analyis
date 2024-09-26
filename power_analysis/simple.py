@@ -6,17 +6,20 @@ from statsmodels.stats.power import TTestIndPower
 
 
 def solve_power(
-    n_samples_per_condition, mean_diff, sample_variance, alpha=0.05, power=0.8
+    mean_diff, condition_1_variance, alpha=0.05, power=0.8, condition_2_variance=None
 ):
+    condition_2_variance = (
+        condition_1_variance if condition_2_variance is None else condition_2_variance
+    )
+    c1v, c2v = condition_1_variance, condition_2_variance
     # calculation of effect size
     # size of samples in pilot study
-    v = sample_variance * (n_samples_per_condition / (n_samples_per_condition - 1))
 
     # calculate the pooled standard deviation
-    # (Cohen's d)
-    s = sqrt(v)
+    s = sqrt((c1v + c2v) / 2)
 
     # calculate the effect size
+    # (Cohen's d)
     d = mean_diff / s
     print(f"Effect size: {d}")
 
